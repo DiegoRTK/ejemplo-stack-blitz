@@ -1,0 +1,84 @@
+<app-loading [message]="message" *ngIf="isLoading"></app-loading>
+
+<div class="container" *ngIf="!isLoading">
+    <div class="row pt-3">
+        <div class="col-3">
+            <h3>Configuración</h3>
+        </div>
+        <div class="col"></div>
+        <div class="col-3"><app-button label="Crear nuevo centro" type="primary" (click)="openModal()"></app-button>
+        </div>
+        <div class="row pb-3">
+            <div class="col-3">
+                <span class="text-primary">Centros de atención</span>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <hr>
+        </div>
+        <div class="row">
+            <app-datatable [rows]="rows" [columns]="columns" [pagination]="false"
+                (performAction)="performAction($event)" [tableButtons]="tableButtons"></app-datatable>
+        </div>
+    </div>
+</div>
+
+<app-modal #modalComponent modalTitle="Nuevo centro" [showCancelButton]="false">
+    <div class="row">
+        <div class="col-6">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Nombre centro</label>
+                </div>
+                <div class="col">
+                    <app-input [showLabel]="false" label="Nombre centro"
+                        [control]="attentionCenter.controls['locationName']" placeholder="Clínica Teresa" type="text">
+                    </app-input>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Zona</label>
+                </div>
+                <div class="col">
+                    <app-select [showLabel]="false" label="Zona" [control]="attentionCenter.controls['zoneId']"
+                        [multiple]="false" placeholder="Seleccione una zona" [options]="zonesLst">
+                    </app-select>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row py-4">
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-2">
+                    <label class="text-secondary">Dirección</label>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-8">
+                            <app-autocomplete [control]="addressToLook" [options]="addresses"
+                                (optionSelected)="onAddressSelected($event)"></app-autocomplete>
+                            <div class="col"></div>
+                        </div>
+                        <div class="col">
+                            <app-input [showLabel]="false" label="Detalle dirección"
+                                [control]="attentionCenter.controls['addressNro']" placeholder="Nro" type="text">
+                            </app-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-2">
+            <app-button (click)="createCenter()" label="Guardar" type="primary"></app-button>
+        </div>
+    </div>
+</app-modal>

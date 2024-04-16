@@ -1,0 +1,13 @@
+<button [ngClass]="classes + ' btn-block w-100'">
+  <ng-container *ngIf="iconPosition === 'left' && icon">
+    <fa-icon class="me-2" [icon]="icon"></fa-icon>
+    <span>{{ label }}</span>
+  </ng-container>
+  <ng-container *ngIf="!iconPosition && icon">
+    <span>{{ label }}</span>
+    <fa-icon class="mx-2" [icon]="icon"></fa-icon>
+  </ng-container>
+  <ng-container *ngIf="!icon">
+    <span>{{ label }}</span>
+  </ng-container>
+</button>

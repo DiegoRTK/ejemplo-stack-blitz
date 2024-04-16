@@ -1,0 +1,62 @@
+<app-loading [message]="message" *ngIf="isLoading"></app-loading>
+
+<div class="container" *ngIf="!isLoading">
+    <div class="row pt-3">
+        <div class="col-3">
+            <h3>Configuración</h3>
+        </div>
+        <div class="col"></div>
+        <div class="col-3"><app-button label="Crear nuevo tipo de cita" type="primary" (click)="openModal()"></app-button>
+        </div>
+    </div>
+    <div class="row pb-3">
+        <div class="col-3">
+            <span class="text-primary">Tipo de cita</span>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <app-datatable [rows]="rows" [columns]="columns" [pagination]="pagination" (performAction)="performAction($event)" [tableButtons]="tableButtons"></app-datatable>
+    </div>
+</div>
+
+<app-modal #modalComponent modalTitle="Nueva tipo cita" [showCancelButton]="false">
+    <ng-container>
+        <div class="row pt-4">
+            <div class="col">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <label class="text-secondary">Tipo</label>
+                    </div>
+                    <div class="col">
+                        <app-input [showLabel]="false" label="Tipo" [control]="appointmentType.controls['typeName']"
+                            placeholder="Ingresar" type="text">
+                        </app-input>
+                        <div class="col"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <label class="text-secondary">Duración de cita</label>
+                    </div>
+                    <div class="col">
+                        <app-select [showLabel]="false" label="Duración de cita"
+                            [control]="appointmentType.controls['duration']" [multiple]="false"
+                            placeholder="Seleccione una duración"
+                            [options]="durationsLst">
+                        </app-select>
+                        <div class="col"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col"></div>
+            <div class="col-2">
+                <app-button (click)="createAppointment()" label="Guardar" type="primary"></app-button>
+            </div>
+        </div>
+    </ng-container>
+</app-modal>

@@ -1,0 +1,54 @@
+<ngx-datatable
+  class="material"
+  [rows]="rows"
+  [columnMode]="ColumnMode.force"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  rowHeight="auto"
+  [limit]="pageSize"
+  [selected]="selected"
+  [selectionType]="SelectionType.checkbox"
+  [selectAllRowsOnPage]="false"
+  [displayCheck]="displayCheck"
+  (activate)="onActivate($event)"
+  (select)="onSelect($event)"
+>
+  <ngx-datatable-column *ngIf="selectableMultiple"
+    [width]="30"
+    [sortable]="false"
+    [canAutoResize]="false"
+    [draggable]="false"
+    [resizeable]="false"
+    [headerCheckboxable]="true"
+    [checkboxable]="selectableMultiple"
+  ></ngx-datatable-column>
+
+  <!-- Itera sobre las columnas definidas -->
+  <ngx-datatable-column *ngFor="let column of columns; let i = index"
+    [width]="getDefaultValue(column.width, 100)"
+    [sortable]="true"
+    [canAutoResize]="true"
+    [draggable]="false"
+    [resizeable]="true"
+    [checkboxable]="false"
+    [name]="column.name ? column.name : ''" 
+    [prop]="column.prop ? column.prop : ''" 
+  >
+</ngx-datatable-column>
+<ngx-datatable-column
+    *ngIf="tableButtons.length > 0"
+    [width]="100"
+    [sortable]="false"
+    [canAutoResize]="true"
+    [draggable]="false"
+    [resizeable]="false"
+    [checkboxable]="false"
+    name="Opciones"
+    >
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <button *ngFor="let button of tableButtons" [ngbTooltip]="button.label" type="button" class="icon-button mx-1" (click)="performActionFn(button.action, row)">
+        <i [ngClass]="button.icon"></i>
+      </button>
+    </ng-template>
+</ngx-datatable-column>
+</ngx-datatable>

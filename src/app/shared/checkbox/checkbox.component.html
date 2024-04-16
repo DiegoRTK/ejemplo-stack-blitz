@@ -1,0 +1,4 @@
+<div class="form-check form-switch">
+  <label class="form-check-label text-secondary" [for]="label">{{ label }}</label>
+  <input class="form-check-input" [formControl]="transformControl" type="checkbox" [id]="label" [checked]="checked" (change)="toggleChecked()" />
+</div>

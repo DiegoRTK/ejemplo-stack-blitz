@@ -1,0 +1,12 @@
+<ng-template #modalContent let-modal (modalDismissed)="closeModal()">
+  <div class="modal-header bg-primary text-white">
+    <h5 class="modal-title">{{ modalTitle }}</h5>
+    <button type="button" class="btn-close text-white" aria-label="Close" (click)="close()"></button>
+  </div>
+  <div class="modal-body">
+    <ng-content></ng-content>
+  </div>
+  <div class="modal-footer" *ngIf="showCancelButton">
+    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+  </div>
+</ng-template>

@@ -1,0 +1,9 @@
+<!-- app.component.html -->
+<div class="wrapper">
+    <div class="sidebar" *ngIf="!isLoginPage()">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="main-content bg-white">
+        <router-outlet></router-outlet>
+    </div>
+</div>

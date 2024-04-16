@@ -1,0 +1,35 @@
+<div class="custom-select-container">
+    <div class="row pb-2" *ngIf="showLabel">
+        <label class="text-secondary">{{label}}</label>
+    </div>
+    <div class="row">
+        <ng-multiselect-dropdown [formControl]="transformControl" [placeholder]="placeholder"
+            [settings]="dropdownSettings" [data]="options" (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+    </div>
+    <div *ngIf="transformControl.invalid && transformControl.touched && transformControl.errors" class="text-danger">
+        <div *ngIf="transformControl.errors['required']">
+            {{ label }} es requerido.
+        </div>
+        <!-- <div *ngIf="transformControl.errors?['minlength']">
+            {{ label }} debe tener al menos {{ transformControl.errors?['minlength'] }} caracteres.
+          </div>
+          <div *ngIf="transformControl.errors?['maxlength']">
+            {{ label }} debe tener como máximo {{ transformControl.errors?['maxlength'] }} caracteres.
+          </div> -->
+    </div>
+    <!-- <div class="row">
+        <select class="custom-select" [multiple]="multiple" (change)="toggleSelection($event)">
+            <option *ngFor="let option of options" [value]="option.value" [selected]="isSelected(option)">
+                {{ option.label }}
+            </option>
+        </select>
+        <div class="selected-options">
+            <div *ngFor="let selectedOption of selectedOptions" class="selected-option">
+                {{ selectedOption.label }}
+                <button class="remove-button" (click)="toggleSelection(selectedOption)">x</button>
+            </div>
+        </div>
+    </div> -->
+
+</div>

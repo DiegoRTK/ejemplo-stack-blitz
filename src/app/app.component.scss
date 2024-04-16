@@ -1,0 +1,15 @@
+/* app.component.scss */
+.wrapper {
+  display: flex;
+  height: 100vh; /* Establece la altura total de la pantalla */
+}
+
+.sidebar {
+  flex: 0 0 15%; /* El sidebar ocupa un tercio del espacio disponible */
+}
+
+.main-content {
+  flex: 1; /* El contenido principal ocupa el espacio restante */
+  overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
+  padding: 20px; /* Ajusta el relleno según sea necesario */
+}

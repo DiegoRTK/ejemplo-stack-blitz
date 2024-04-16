@@ -1,0 +1,22 @@
+.material {
+    box-shadow: none;
+    border: 1px solid #ddd;
+}
+/* Estilos para el botón con solo el icono */
+.icon-button {
+    border: none; /* Eliminar borde */
+    background-color: transparent; /* Fondo transparente */
+    padding: 0; /* Eliminar relleno interno */
+    cursor: pointer; /* Cambiar cursor al pasar por encima para indicar interactividad */
+  }
+  
+  .icon-button:focus {
+    outline: none; /* Eliminar contorno al enfocar (evitar resaltado azul predeterminado en algunos navegadores) */
+  }
+  
+  /* Estilos para el icono dentro del botón */
+  .icon-button i {
+    color: inherit; /* Heredar el color del texto del botón */
+    font-size: 1.5rem; /* Tamaño del icono (ajustar según sea necesario) */
+  }
+  

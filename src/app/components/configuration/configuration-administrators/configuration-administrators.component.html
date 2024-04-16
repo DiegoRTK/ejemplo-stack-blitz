@@ -1,0 +1,64 @@
+<app-loading [message]="message" *ngIf="isLoading"></app-loading>
+
+<div class="container" *ngIf="!isLoading">
+    <div class="row pt-3">
+        <div class="col-3">
+            <h3>Configuración</h3>
+        </div>
+        <div class="col"></div>
+        <div class="col-3"><app-button label="Crear nuevo usuario" type="primary" (click)="openModal()"></app-button>
+        </div>
+    </div>
+    <div class="row pb-3">
+        <div class="col-3">
+            <span class="text-primary">Administradores</span>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <hr>
+    </div>
+    <div class="row">
+        <app-datatable [rows]="rows" [columns]="columns" [pagination]="pagination"></app-datatable>
+    </div>
+</div>
+
+<app-modal #modalComponent modalTitle="Nuevo usuario" [showCancelButton]="false">
+    <div class="row">
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <label class="text-secondary">Correo electrónico</label>
+                </div>
+                <div class="col">
+                    <app-input [showLabel]="false" label="Correo electrónico" [control]="adminForm.controls['email']"
+                        placeholder="ejemplo123@gmail.com" type="email">
+                    </app-input>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <label class="text-secondary">Contraseña</label>
+                </div>
+                <div class="col">
+                    <app-input [isPassword]="true" [showLabel]="false" label="Contraseña"
+                        [control]="adminForm.controls['password']" placeholder="Digite una contraseña" type="password">
+                    </app-input>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center py-3">
+            <div class="col">
+                <app-checkbox label="Es usuario administrador" [control]="adminForm.controls['isAdmin']" [checked]="false"></app-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-1">
+        <div class="col"></div>
+        <div class="col-2">
+            <app-button label="Guardar" type="primary" (click)="createCenter()"></app-button>
+        </div>
+    </div>
+</app-modal>

@@ -1,0 +1,334 @@
+<app-loading [message]="message" *ngIf="isLoading"></app-loading>
+
+<div class="container" *ngIf="!isLoading">
+    <div class="row pt-3">
+        <div class="col-3">
+            <h3>Configuración</h3>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row pb-3">
+        <div class="col-3">
+            <span class="text-primary">Agentes</span>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <hr>
+    </div>
+    <div class="row py-3">
+        <div class="col">
+            <h5>Alta de trabajador social</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Nombre</label>
+                </div>
+                <div class="col-6">
+                    <app-input [showLabel]="false" label="Nombre" [control]="agentForm.controls['firstName']"
+                        placeholder="Alonso" type="text">
+                    </app-input>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Apellido</label>
+                </div>
+                <div class="col-6">
+                    <app-input [showLabel]="false" label="Apellido" [control]="agentForm.controls['lastName']"
+                        placeholder="Saenz" type="text">
+                    </app-input>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row py-4">
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Dirección</label>
+                </div>
+                <div class="col-6">
+                    <app-input [showLabel]="false" label="Dirección" [control]="agentForm.controls['address']"
+                        placeholder="Carrera, calle, avenida" type="text">
+                    </app-input>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Ciudad</label>
+                </div>
+                <div class="col-6">
+                    <app-input [showLabel]="false" label="Ciudad" [control]="agentForm.controls['city']"
+                        placeholder="Madrid" type="text">
+                    </app-input>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pb-4">
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Correo electrónico</label>
+                </div>
+                <div class="col-6">
+                    <app-input [showLabel]="false" label="Correo electrónico" [control]="agentForm.controls['email']"
+                        placeholder="ejemplo123@gmail.com" type="email">
+                    </app-input>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Número de móvil</label>
+                </div>
+                <div class="col-6">
+                    <app-input [showLabel]="false" label="Número de móvil" [control]="agentForm.controls['phoneNumber']"
+                        [isCountryPicker]="true" placeholder="" type="phoneNumber">
+                    </app-input>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pb-4">
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Zona de trabajo</label>
+                </div>
+                <div class="col-4">
+                    <app-select [showLabel]="false" label="Zona de trabajo" [control]="agentForm.controls['zoneId']"
+                        [multiple]="false" placeholder="Sin zona"
+                        [options]="zonesLst">
+                    </app-select>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Número de teléfono</label>
+                </div>
+                <div class="col-6">
+                    <app-input [showLabel]="false" label="teléfono" [control]="agentForm.controls['phoneNumber']"
+                        placeholder="" type="phoneNumber">
+                    </app-input>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr>
+    </div>
+
+    <div class="row py-4">
+        <div class="col">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="text-secondary">Tipo de cita</label>
+                </div>
+                <div class="col-6">
+                    <app-select [showLabel]="false" label="Tipo de cita"
+                        [control]="agentForm.controls['appointmentTypeAgentId']" [multiple]="false"
+                        placeholder="Seleccionar"
+                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                    </app-select>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-4">
+                    <label class="text-secondary">Días de atención</label>
+                </div>
+                <div class="col">
+                    <div class="row py-2">
+                        <div class="col-3">
+                            Lunes
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-1 align-items-center">
+                                    <label>-</label>
+                                </div>
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-3">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-xmark"></fa-icon>
+                                        </div>
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-plus"></fa-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-3">
+                            Martes
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-1 align-items-center">
+                                    <label>-</label>
+                                </div>
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-3">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-xmark"></fa-icon>
+                                        </div>
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-plus"></fa-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-3">
+                            Miércoles
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-1 align-items-center">
+                                    <label>-</label>
+                                </div>
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-3">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-xmark"></fa-icon>
+                                        </div>
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-plus"></fa-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-3">
+                            Jueves
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-1 align-items-center">
+                                    <label>-</label>
+                                </div>
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-3">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-xmark"></fa-icon>
+                                        </div>
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-plus"></fa-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-3">
+                            Viernes
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-1 align-items-center">
+                                    <label>-</label>
+                                </div>
+                                <div class="col-4">
+                                    <app-select [showLabel]="false" label=" " [multiple]="false" placeholder=" : "
+                                        [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+                                    </app-select>
+                                </div>
+                                <div class="col-3">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-xmark"></fa-icon>
+                                        </div>
+                                        <div class="col-2">
+                                            <fa-icon icon="circle-plus"></fa-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col">
+            <app-button label="Guardar" type="primary"></app-button>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

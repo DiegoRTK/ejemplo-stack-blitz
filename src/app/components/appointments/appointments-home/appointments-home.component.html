@@ -1,0 +1,66 @@
+<app-loading [message]="message" *ngIf="isLoading; else component"></app-loading>
+
+<ng-template #component>
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-3">
+        <h3>Citas</h3>
+      </div>
+      <div class="col"></div>
+      <div class="col-2" *appHasRole="ROLES.ADMIN">
+        <app-button label="Cancelar citas" type="primary" [outline]="true"></app-button>
+      </div>
+      <div class="col-2" *appHasRole="ROLES.ADMIN">
+        <app-button label="Crear nueva cita" type="primary" (click)="openModal()"></app-button>
+      </div>
+    </div>
+    <div class="row">
+      <hr>
+    </div>
+    <div class="row align-items-end">
+      <div class="col-1"><label class="fs-6 text-nowrap overflow-hidden">Filtrar por:</label></div>
+      <div class="col-4">
+        <app-input [control]="filters.controls['dates']" label="" placeholder="Selecciona una fecha"
+          [isDatePickerRange]="true"></app-input>
+      </div>
+      <div class="col-3">
+        <app-select [showLabel]="false" label="Campo a filtrar" [control]="filters.controls['filterField']"
+          placeholder="Campo a filtrar" [options]="fieldsLst">
+        </app-select>
+      </div>
+      <div class="col" *ngIf="filters.controls['filterField'].value">
+        <app-input [showLabel]="false" label="Campo búsqueda" [control]="filters.controls['value']"
+          placeholder="ejemplo123@gmail.com" type="email">
+        </app-input>
+      </div>
+    </div>
+    <div class="row pt-4">
+      <app-datatable [rows]="appointmentsLst" [columns]="columns" [pagination]="pagination"></app-datatable>
+    </div>
+  </div>
+</ng-template>
+
+<!-- <app-modal #modalComponent (modalDismissed)="closeModal()" modalTitle="Nueva cita" [showCancelButton]="false">
+  <ng-container *ngIf="isPersonalData">
+    <div class="row">
+      <div class="col">
+        <h6>Datos personales</h6>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-4">
+            <label class="text-secondary">Tipo de cita</label>
+          </div>
+          <div class="col-6">
+            <app-select [showLabel]="false" label="Tipo de cita"
+              [control]="agentForm.controls['appointmentTypeAgentId']" [multiple]="false" placeholder="Seleccionar"
+              [options]="[{value:1, label:'Ejemplo 1'}, {value:2, label:'Ejemplo 2'}]">
+            </app-select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-modal> -->

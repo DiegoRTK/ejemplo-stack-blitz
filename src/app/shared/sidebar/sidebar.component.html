@@ -1,0 +1,55 @@
+<div class="sidebar" [ngClass]="{'open': isSidebarOpen}" *ngIf="shouldShowSidebar()">
+    <div class="row logo justify-content-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/10763/10763567.png" alt="Logo" class="smaller-logo">
+    </div>
+    <div class="row justify-content-start p-3">
+        <div class="col">
+            <app-button label="Citas" type="primary" contentPosition="text-start" [outline]="selectedButton !== 0"
+                [border]="false" icon="calendar-days" iconPosition="left" [ngClass]="{'selected': selectedButton === 0}"
+                (click)="selectButton(0)"></app-button>
+        </div>
+    </div>
+    <div class="row justify-content-start p-3">
+        <div class="col">
+            <app-button label="Agentes" type="primary" contentPosition="text-start" [outline]="selectedButton !== 1"
+                [border]="false" icon="suitcase" iconPosition="left" [ngClass]="{'selected': selectedButton === 1}"
+                (click)="selectButton(1)"></app-button>
+        </div>
+    </div>
+    <div class="row justify-content-start p-3">
+        <div class="col">
+            <app-button label="Estadísticas" type="primary" contentPosition="text-start"
+                [outline]="selectedButton !== 2" [border]="false" icon="chart-column" iconPosition="left"
+                [ngClass]="{'selected': selectedButton === 2}" (click)="selectButton(2)"></app-button>
+        </div>
+    </div>
+    <div class="row justify-content-start p-3">
+        <div class="col">
+            <app-button label="Configuración" type="primary" contentPosition="text-start"
+                [outline]="selectedButton !== 3" [border]="false" icon="sliders" iconPosition="left"
+                [ngClass]="{'selected': selectedButton === 3}" (click)="selectButton(3)"></app-button>
+        </div>
+    </div>
+    <div class="row justify-content-start ps-5 py-3" *ngIf="selectedButton === 3">
+        <div class="row" *appHasRole="ROLES.ADMIN">
+            <span class="small-size my-2 text-secondary flex-row" (click)="selectSubIndex(0)" [ngClass]="{'fw-bold': selectedSubIndex === 0}"
+                  [style.cursor]="'pointer'">Agentes</span>
+        </div>
+        <div class="row" *appHasRole="ROLES.ADMIN">
+            <span class="small-size my-2 text-secondary flex-row" (click)="selectSubIndex(1)" [ngClass]="{'fw-bold': selectedSubIndex === 1}"
+                  [style.cursor]="'pointer'">Tipos de citas</span>
+        </div>
+        <div class="row" *appHasRole="ROLES.ADMIN">
+            <span class="small-size my-2 text-secondary flex-row" (click)="selectSubIndex(2)" [ngClass]="{'fw-bold': selectedSubIndex === 2}"
+                  [style.cursor]="'pointer'">Centros de atención</span>
+        </div>
+        <div class="row" *appHasRole="ROLES.ADMIN">
+            <span class="small-size my-2 text-secondary flex-row" (click)="selectSubIndex(3)" [ngClass]="{'fw-bold': selectedSubIndex === 3}"
+                  [style.cursor]="'pointer'">Administradores</span>
+        </div>
+    </div>
+    
+    <!-- <button class="toggle-button" (click)="toggleSidebar()">
+        <fa-icon [icon]="isSidebarOpen ? ['fas', 'chevron-left'] : ['fas', 'bars']" class="text-dark"></fa-icon>
+    </button> -->
+</div>

@@ -1,0 +1,33 @@
+<div class="row full-size vh-100 w-100">
+    <div class="col-lg-8 d-flex align-items-center justify-content-center">
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/5980/5980048.png" alt="Logo">
+        </div>
+    </div>
+    <div class="col-lg-4 d-flex just align-items-center">
+        <div class="container">
+            <div class="row">
+                <h3><strong>Iniciar sesión</strong></h3>
+                <div class="col-12">
+                    <span class="text-secondary">Ingresa tu email y contraseña para continuar</span>
+                </div>
+            </div>
+            <div class="row my-5">
+                <app-input [control]="loginForm.controls['email']" label="Email" placeholder="ejemplo123@hotmail.com" type="email">
+                </app-input>
+            </div>
+            <div class="row my-4">
+                <app-input [isPassword]="true" [control]="loginForm.controls['password']" label="Password" placeholder="Ingrese la contraseña" type="password">
+                </app-input>
+            </div>
+            <div class="row my-4">
+                <span><a href="#" class="text-decoration-none text-primary">¿Olvidaste tu contraseña?</a></span>
+            </div>
+            <div class="row my-4">
+                <div class="col-12 p-2">
+                    <app-button (click)="submitForm()" label="Iniciar sesión" type="primary"></app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

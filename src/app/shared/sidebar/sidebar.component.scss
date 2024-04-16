@@ -1,0 +1,48 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -27vh;
+  width: 27vh;
+  height: 100%;
+  color: black;
+  transition: left 0.3s ease;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 20px;
+  right: -30px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.open-sidebar-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.smaller-logo {
+  width: 50%;
+  height: auto;
+}
+
+.selected {
+  outline: none;
+}
+
+.small-size {
+  font-size: small;
+}
